@@ -10,6 +10,21 @@ const Game = {
     // === אתחול ===
     init() {
         this.showScreen('screen-home');
+        this.updateTotalStars();
+    },
+
+    // === עדכון סך כוכבים במסך הבית ===
+    updateTotalStars() {
+        const total = Storage.getTotalStars();
+        const el = document.getElementById('total-stars-display');
+        if (el) {
+            if (total > 0) {
+                el.textContent = `⭐ ${total} כוכבים נאספו!`;
+                el.style.display = 'block';
+            } else {
+                el.style.display = 'none';
+            }
+        }
     },
 
     // === ניווט בין מסכים ===
@@ -56,6 +71,7 @@ const Game = {
         this.cleanup();
         this.showScreen('screen-home');
         this.currentMode = null;
+        this.updateTotalStars();
     },
 
     // === יציאה ממשחק פעיל ===
@@ -92,6 +108,19 @@ const Game = {
         document.getElementById('stat-wrong').textContent = data.wrong;
         document.getElementById('stat-stars').textContent = data.stars;
 
+        // כפתור שלב הבא (רק במסע הכוכבים ורק אם עבר את השלב)
+        const nextLevelBtn = document.getElementById('btn-next-level');
+        if (this.currentMode === 'starJourney' && data.levelStars && data.levelStars >= 1) {
+            const nextLevel = StarJourney.currentLevel + 1;
+            if (nextLevel <= StarJourney.levels.length) {
+                nextLevelBtn.style.display = 'flex';
+            } else {
+                nextLevelBtn.style.display = 'none';
+            }
+        } else {
+            nextLevelBtn.style.display = 'none';
+        }
+
         // שיא חדש
         const recordContainer = document.getElementById('stat-record-container');
         if (data.isNewRecord) {
@@ -117,6 +146,18 @@ const Game = {
             data.correctPercent, 
             data.isNewRecord
         );
+    },
+
+    // === שלב הבא (מסע הכוכבים) ===
+    nextLevel() {
+        const next = StarJourney.currentLevel + 1;
+        if (next <= StarJourney.levels.length) {
+            StarJourney.startLevel(next);
+        } else {
+            // סיים את כל השלבים!
+            StarJourney.initLevelsScreen();
+            this.showScreen('screen-levels');
+        }
     },
 
     // === שחק שוב ===

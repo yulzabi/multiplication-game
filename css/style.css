@@ -64,7 +64,19 @@ body {
 .game-subtitle {
     font-size: 1.3em;
     color: rgba(255,255,255,0.9);
-    margin-bottom: 20px;
+    margin-bottom: 5px;
+}
+
+.total-stars-display {
+    font-size: 1.1em;
+    color: #FFD700;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    background: rgba(255,255,255,0.1);
+    padding: 6px 20px;
+    border-radius: 20px;
+    display: inline-block;
 }
 
 .character-home {
@@ -141,6 +153,11 @@ body {
 .btn-retry {
     background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
     color: #1a5c3a;
+}
+
+.btn-next-level {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #7a4a2a;
 }
 
 .btn-home {

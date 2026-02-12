@@ -14,6 +14,7 @@
         <div class="home-container">
             <h1 class="game-title">⭐ כוכב הכפל ⭐</h1>
             <p class="game-subtitle">בואו ללמוד את לוח הכפל!</p>
+            <div class="total-stars-display" id="total-stars-display"></div>
             
             <div class="character-home">
                 <div id="kafli-home" class="kafli">
@@ -191,6 +192,10 @@
                 <button class="btn btn-retry" onclick="Game.retry()">
                     <span class="btn-icon">🔄</span>
                     <span class="btn-text">שחק שוב</span>
+                </button>
+                <button class="btn btn-next-level" id="btn-next-level" onclick="Game.nextLevel()" style="display:none;">
+                    <span class="btn-icon">➡️</span>
+                    <span class="btn-text">שלב הבא</span>
                 </button>
                 <button class="btn btn-home" onclick="Game.goHome()">
                     <span class="btn-icon">🏠</span>
