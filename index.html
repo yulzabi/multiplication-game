@@ -9,11 +9,36 @@
     <link rel="stylesheet" href="css/effects.css">
 </head>
 <body>
+    <!-- מסך כניסה -->
+    <div id="screen-welcome" class="screen active">
+        <div class="welcome-container">
+            <h1 class="game-title">⭐ כוכב הכפל ⭐</h1>
+            <p class="game-subtitle">ברוכים הבאים!</p>
+            
+            <div class="welcome-section">
+                <label class="welcome-label">מה השם שלך? 😊</label>
+                <input type="text" id="player-name-input" class="name-input" placeholder="הכניסו שם..." maxlength="20" autocomplete="off">
+            </div>
+
+            <div class="welcome-section">
+                <label class="welcome-label">בחרו קמע! 🐾</label>
+                <div class="mascot-grid-select" id="mascot-grid">
+                    <!-- דמויות ייווצרו דינמית -->
+                </div>
+            </div>
+
+            <button class="btn btn-start-game" onclick="Mascots.saveAndEnter()">
+                <span class="btn-icon">🚀</span>
+                <span class="btn-text">יאללה, בואו נשחק!</span>
+            </button>
+        </div>
+    </div>
+
     <!-- מסך פתיחה -->
-    <div id="screen-home" class="screen active">
+    <div id="screen-home" class="screen">
         <div class="home-container">
             <h1 class="game-title">⭐ כוכב הכפל ⭐</h1>
-            <p class="game-subtitle">בואו ללמוד את לוח הכפל!</p>
+            <p class="game-subtitle" id="welcome-message">בואו ללמוד את לוח הכפל!</p>
             <div class="total-stars-display" id="total-stars-display"></div>
             
             <div class="character-home">
@@ -53,6 +78,7 @@
                     <span class="btn-icon">🌟</span>
                     <span class="btn-text">מסע הכוכבים</span>
                 </button>
+                <button class="btn-settings" onclick="Game.showWelcome()">⚙️ שנה שם / קמע</button>
             </div>
         </div>
     </div>
@@ -214,6 +240,7 @@
     <script src="js/questions.js"></script>
     <script src="js/character.js"></script>
     <script src="js/effects.js"></script>
+    <script src="js/mascots.js"></script>
     <script src="js/modes/practice.js"></script>
     <script src="js/modes/timeChallenge.js"></script>
     <script src="js/modes/starJourney.js"></script>

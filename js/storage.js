@@ -7,7 +7,27 @@ const Storage = {
         HIGH_SCORES: 'kafli_high_scores',
         STAR_JOURNEY: 'kafli_star_journey',
         TOTAL_STARS: 'kafli_total_stars',
-        STATS: 'kafli_stats'
+        STATS: 'kafli_stats',
+        PLAYER: 'kafli_player'
+    },
+
+    // === פרטי שחקן ===
+    getPlayer() {
+        return this._get(this.KEYS.PLAYER) || null;
+    },
+
+    setPlayer(name, mascot) {
+        this._set(this.KEYS.PLAYER, { name, mascot });
+    },
+
+    getPlayerName() {
+        const p = this.getPlayer();
+        return p ? p.name : '';
+    },
+
+    getPlayerMascot() {
+        const p = this.getPlayer();
+        return p ? p.mascot : 'fox';
     },
 
     // === שיאים ===

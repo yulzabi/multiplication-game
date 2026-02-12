@@ -75,7 +75,14 @@ const Character = {
     getMessage(category) {
         const msgs = this.messages[category];
         if (!msgs || msgs.length === 0) return '';
-        return msgs[Math.floor(Math.random() * msgs.length)];
+        let msg = msgs[Math.floor(Math.random() * msgs.length)];
+        
+        // הוסף שם השחקן לפעמים
+        const name = Storage.getPlayerName();
+        if (name && Math.random() > 0.5) {
+            msg = msg.replace('!', ` ${name}!`);
+        }
+        return msg;
     },
 
     // הפעלת אנימציה על הדמות

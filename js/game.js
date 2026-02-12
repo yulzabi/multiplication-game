@@ -9,8 +9,44 @@ const Game = {
 
     // === אתחול ===
     init() {
-        this.showScreen('screen-home');
+        const player = Storage.getPlayer();
+        if (player && player.name) {
+            // שחקן קיים - ישירות למסך הבית
+            this.showScreen('screen-home');
+            this.updateHomeScreen();
+            Mascots.updateAllMascots();
+        } else {
+            // שחקן חדש - מסך כניסה
+            this.showScreen('screen-welcome');
+            Mascots.initWelcomeScreen();
+        }
+    },
+
+    // === עדכון מסך הבית ===
+    updateHomeScreen() {
         this.updateTotalStars();
+        const name = Storage.getPlayerName();
+        const mascotData = Mascots.list.find(m => m.id === Storage.getPlayerMascot());
+        const mascotName = mascotData ? mascotData.name : 'כפלי';
+        const mascotEmoji = mascotData ? mascotData.emoji : '🦊';
+
+        // עדכון הודעת ברוכים הבאים
+        const msg = document.getElementById('welcome-message');
+        if (msg && name) {
+            msg.textContent = `שלום ${name}! בואו נלמד כפל!`;
+        }
+
+        // עדכון בועת דיבור
+        const speech = document.querySelector('#home-speech p');
+        if (speech && name) {
+            speech.innerHTML = `שלום ${name}! אני ${mascotName}! ${mascotEmoji}<br>בואו נלמד כפל ביחד!`;
+        }
+    },
+
+    // === הצגת מסך כניסה ===
+    showWelcome() {
+        Mascots.initWelcomeScreen();
+        this.showScreen('screen-welcome');
     },
 
     // === עדכון סך כוכבים במסך הבית ===
@@ -71,7 +107,8 @@ const Game = {
         this.cleanup();
         this.showScreen('screen-home');
         this.currentMode = null;
-        this.updateTotalStars();
+        this.updateHomeScreen();
+        Mascots.updateAllMascots();
     },
 
     // === יציאה ממשחק פעיל ===

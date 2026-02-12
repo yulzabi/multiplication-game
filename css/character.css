@@ -391,3 +391,742 @@
     animation: kafliJump 0.6s ease !important;
     transform-origin: center center;
 }
+
+/* ========================================
+   מערכת דמויות - קמעות
+   ======================================== */
+
+/* --- בסיס משותף לכל הדמויות --- */
+.mascot {
+    position: relative;
+    width: 120px;
+    height: 150px;
+    display: inline-block;
+    animation: kafliIdle 3s ease-in-out infinite;
+}
+
+.mascot-small {
+    transform: scale(0.65);
+    transform-origin: center center;
+    animation: none;
+}
+
+/* אנימציות משותפות */
+.mascot.mascot-jumping {
+    animation: kafliJump 0.6s ease !important;
+}
+
+.mascot.mascot-sad {
+    animation: kafliSad 0.5s ease !important;
+}
+
+.mascot.mascot-cheering {
+    animation: kafliCheer 0.8s ease !important;
+}
+
+/* ========================================
+   🐱 חשבי - חתול
+   ======================================== */
+.mascot-cat .mascot-head {
+    position: absolute;
+    width: 90px;
+    height: 78px;
+    background: #808080;
+    border-radius: 50%;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.mascot-cat .mascot-head::before {
+    content: '';
+    position: absolute;
+    width: 55px;
+    height: 40px;
+    background: #d4d4d4;
+    border-radius: 50%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-cat .mascot-ear-left,
+.mascot-cat .mascot-ear-right {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 30px solid #808080;
+    z-index: 1;
+    top: 0;
+}
+
+.mascot-cat .mascot-ear-left::after,
+.mascot-cat .mascot-ear-right::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #FFB6C1;
+    top: 8px;
+    left: -10px;
+}
+
+.mascot-cat .mascot-ear-left { left: 20px; }
+.mascot-cat .mascot-ear-right { right: 20px; }
+
+.mascot-cat .mascot-eye {
+    position: absolute;
+    width: 20px;
+    height: 22px;
+    background: #90EE90;
+    border-radius: 50%;
+    top: 24px;
+    z-index: 3;
+}
+
+.mascot-cat .mascot-eye-left { left: 20px; }
+.mascot-cat .mascot-eye-right { right: 20px; }
+
+.mascot-cat .mascot-pupil {
+    position: absolute;
+    width: 8px;
+    height: 16px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-cat .mascot-nose {
+    position: absolute;
+    width: 10px;
+    height: 8px;
+    background: #FFB6C1;
+    border-radius: 50% 50% 50% 50%;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-cat .mascot-mouth {
+    position: absolute;
+    width: 20px;
+    height: 8px;
+    border-bottom: 2px solid #555;
+    border-radius: 0 0 50% 50%;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-cat .mascot-whiskers {
+    position: absolute;
+    bottom: 20px;
+    z-index: 5;
+    width: 100%;
+}
+
+.mascot-cat .mascot-whiskers::before,
+.mascot-cat .mascot-whiskers::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 1px;
+    background: #555;
+}
+
+.mascot-cat .mascot-whiskers::before { left: 5px; top: 0; transform: rotate(-5deg); }
+.mascot-cat .mascot-whiskers::after { right: 5px; top: 0; transform: rotate(5deg); }
+
+.mascot-cat .mascot-body {
+    position: absolute;
+    width: 65px;
+    height: 50px;
+    background: #808080;
+    border-radius: 30px 30px 25px 25px;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.mascot-cat .mascot-belly {
+    position: absolute;
+    width: 40px;
+    height: 35px;
+    background: #d4d4d4;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-cat .mascot-tail {
+    position: absolute;
+    width: 8px;
+    height: 40px;
+    background: #808080;
+    border-radius: 4px 4px 0 0;
+    bottom: 15px;
+    left: -5px;
+    transform: rotate(30deg);
+    transform-origin: bottom;
+    animation: tailWag 2s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* ========================================
+   🐶 מספרי - כלב
+   ======================================== */
+.mascot-dog .mascot-head {
+    position: absolute;
+    width: 88px;
+    height: 80px;
+    background: #D2691E;
+    border-radius: 45px 45px 35px 35px;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.mascot-dog .mascot-head::before {
+    content: '';
+    position: absolute;
+    width: 58px;
+    height: 42px;
+    background: #FFDEAD;
+    border-radius: 30px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-dog .mascot-ear-left,
+.mascot-dog .mascot-ear-right {
+    position: absolute;
+    width: 25px;
+    height: 38px;
+    background: #8B4513;
+    border-radius: 50% 50% 50% 50%;
+    z-index: 1;
+    top: 12px;
+}
+
+.mascot-dog .mascot-ear-left { left: 8px; transform: rotate(15deg); }
+.mascot-dog .mascot-ear-right { right: 8px; transform: rotate(-15deg); }
+
+.mascot-dog .mascot-eye {
+    position: absolute;
+    width: 20px;
+    height: 22px;
+    background: white;
+    border-radius: 50%;
+    top: 22px;
+    z-index: 3;
+}
+
+.mascot-dog .mascot-eye-left { left: 18px; }
+.mascot-dog .mascot-eye-right { right: 18px; }
+
+.mascot-dog .mascot-pupil {
+    position: absolute;
+    width: 11px;
+    height: 12px;
+    background: #2c1810;
+    border-radius: 50%;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-dog .mascot-nose {
+    position: absolute;
+    width: 16px;
+    height: 12px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-dog .mascot-mouth {
+    position: absolute;
+    width: 22px;
+    height: 10px;
+    border-bottom: 3px solid #1a1a1a;
+    border-radius: 0 0 50% 50%;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-dog .mascot-tongue {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #FF69B4;
+    border-radius: 0 0 50% 50%;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-dog .mascot-body {
+    position: absolute;
+    width: 68px;
+    height: 52px;
+    background: #D2691E;
+    border-radius: 35px 35px 25px 25px;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.mascot-dog .mascot-belly {
+    position: absolute;
+    width: 42px;
+    height: 38px;
+    background: #FFDEAD;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-dog .mascot-tail {
+    position: absolute;
+    width: 12px;
+    height: 25px;
+    background: #D2691E;
+    border-radius: 50%;
+    bottom: 18px;
+    left: -8px;
+    transform: rotate(-20deg);
+    animation: tailWag 1s ease-in-out infinite;
+    z-index: 0;
+}
+
+/* ========================================
+   🐰 קופצי - ארנב
+   ======================================== */
+.mascot-bunny .mascot-head {
+    position: absolute;
+    width: 85px;
+    height: 78px;
+    background: #FFF0F5;
+    border-radius: 50%;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    border: 2px solid #FFB6C1;
+}
+
+.mascot-bunny .mascot-ear-left,
+.mascot-bunny .mascot-ear-right {
+    position: absolute;
+    width: 22px;
+    height: 50px;
+    background: #FFF0F5;
+    border: 2px solid #FFB6C1;
+    border-radius: 50%;
+    z-index: 1;
+    top: -20px;
+}
+
+.mascot-bunny .mascot-ear-left::after,
+.mascot-bunny .mascot-ear-right::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 35px;
+    background: #FFB6C1;
+    border-radius: 50%;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-bunny .mascot-ear-left { left: 25px; transform: rotate(-10deg); }
+.mascot-bunny .mascot-ear-right { right: 25px; transform: rotate(10deg); }
+
+.mascot-bunny .mascot-eye {
+    position: absolute;
+    width: 18px;
+    height: 20px;
+    background: white;
+    border-radius: 50%;
+    top: 25px;
+    z-index: 3;
+    border: 1px solid #ddd;
+}
+
+.mascot-bunny .mascot-eye-left { left: 18px; }
+.mascot-bunny .mascot-eye-right { right: 18px; }
+
+.mascot-bunny .mascot-pupil {
+    position: absolute;
+    width: 10px;
+    height: 11px;
+    background: #FF69B4;
+    border-radius: 50%;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-bunny .mascot-nose {
+    position: absolute;
+    width: 10px;
+    height: 7px;
+    background: #FFB6C1;
+    border-radius: 50%;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-bunny .mascot-mouth {
+    position: absolute;
+    width: 16px;
+    height: 6px;
+    border-bottom: 2px solid #FFB6C1;
+    border-radius: 0 0 50% 50%;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-bunny .mascot-cheek-left,
+.mascot-bunny .mascot-cheek-right {
+    position: absolute;
+    width: 14px;
+    height: 8px;
+    background: rgba(255,182,193,0.4);
+    border-radius: 50%;
+    bottom: 18px;
+    z-index: 3;
+}
+
+.mascot-bunny .mascot-cheek-left { left: 8px; }
+.mascot-bunny .mascot-cheek-right { right: 8px; }
+
+.mascot-bunny .mascot-body {
+    position: absolute;
+    width: 65px;
+    height: 48px;
+    background: #FFF0F5;
+    border: 2px solid #FFB6C1;
+    border-radius: 35px 35px 25px 25px;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.mascot-bunny .mascot-belly {
+    position: absolute;
+    width: 40px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-bunny .mascot-tail {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border: 2px solid #FFB6C1;
+    border-radius: 50%;
+    bottom: 12px;
+    left: -8px;
+    z-index: 0;
+}
+
+/* ========================================
+   🐻 חכמי - דוב
+   ======================================== */
+.mascot-bear .mascot-head {
+    position: absolute;
+    width: 92px;
+    height: 82px;
+    background: #8B6914;
+    border-radius: 50%;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.mascot-bear .mascot-head::before {
+    content: '';
+    position: absolute;
+    width: 55px;
+    height: 40px;
+    background: #DEB887;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-bear .mascot-ear-left,
+.mascot-bear .mascot-ear-right {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: #8B6914;
+    border-radius: 50%;
+    z-index: 1;
+    top: 4px;
+}
+
+.mascot-bear .mascot-ear-left::after,
+.mascot-bear .mascot-ear-right::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #DEB887;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mascot-bear .mascot-ear-left { left: 12px; }
+.mascot-bear .mascot-ear-right { right: 12px; }
+
+.mascot-bear .mascot-eye {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    top: 28px;
+    z-index: 3;
+}
+
+.mascot-bear .mascot-eye::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    right: 2px;
+}
+
+.mascot-bear .mascot-eye-left { left: 22px; }
+.mascot-bear .mascot-eye-right { right: 22px; }
+
+.mascot-bear .mascot-nose {
+    position: absolute;
+    width: 14px;
+    height: 10px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-bear .mascot-mouth {
+    position: absolute;
+    width: 18px;
+    height: 8px;
+    border-bottom: 2px solid #1a1a1a;
+    border-radius: 0 0 50% 50%;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-bear .mascot-body {
+    position: absolute;
+    width: 72px;
+    height: 55px;
+    background: #8B6914;
+    border-radius: 35px 35px 25px 25px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.mascot-bear .mascot-belly {
+    position: absolute;
+    width: 45px;
+    height: 38px;
+    background: #DEB887;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ========================================
+   🦉 ינשופי - ינשוף
+   ======================================== */
+.mascot-owl .mascot-head {
+    position: absolute;
+    width: 90px;
+    height: 80px;
+    background: #6B4226;
+    border-radius: 50% 50% 45% 45%;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.mascot-owl .mascot-head::before {
+    content: '';
+    position: absolute;
+    width: 70px;
+    height: 55px;
+    background: #DEB887;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-owl .mascot-ear-left,
+.mascot-owl .mascot-ear-right {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 22px solid #6B4226;
+    z-index: 1;
+    top: 2px;
+}
+
+.mascot-owl .mascot-ear-left { left: 20px; transform: rotate(-10deg); }
+.mascot-owl .mascot-ear-right { right: 20px; transform: rotate(10deg); }
+
+.mascot-owl .mascot-eye {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: white;
+    border: 3px solid #6B4226;
+    border-radius: 50%;
+    top: 20px;
+    z-index: 3;
+}
+
+.mascot-owl .mascot-eye-left { left: 12px; }
+.mascot-owl .mascot-eye-right { right: 12px; }
+
+.mascot-owl .mascot-pupil {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #FF8C00;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mascot-owl .mascot-pupil::after {
+    content: '';
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.mascot-owl .mascot-nose {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid #FF8C00;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.mascot-owl .mascot-body {
+    position: absolute;
+    width: 70px;
+    height: 52px;
+    background: #6B4226;
+    border-radius: 35px 35px 25px 25px;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.mascot-owl .mascot-belly {
+    position: absolute;
+    width: 45px;
+    height: 38px;
+    background: #DEB887;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.mascot-owl .mascot-wing-left,
+.mascot-owl .mascot-wing-right {
+    position: absolute;
+    width: 20px;
+    height: 35px;
+    background: #8B5E3C;
+    border-radius: 50%;
+    top: 5px;
+    z-index: 0;
+}
+
+.mascot-owl .mascot-wing-left { left: -6px; transform: rotate(10deg); }
+.mascot-owl .mascot-wing-right { right: -6px; transform: rotate(-10deg); }
+
+/* ========================================
+   בחירת קמע - מסך כניסה
+   ======================================== */
+.mascot-option {
+    width: 80px;
+    height: 100px;
+    transform: scale(0.6);
+    transform-origin: center center;
+    animation: none !important;
+}
+
+.mascot-option.selected-mascot {
+    filter: drop-shadow(0 0 10px #FFD700);
+}
