@@ -187,7 +187,7 @@ const StarJourney = {
             title: `סיכום שלב ${this.currentLevel}`,
             correct: this.correct,
             wrong: this.wrong,
-            stars: this.correct,
+            stars: stars,
             isNewRecord: isNewRecord,
             correctPercent: (this.correct / this.totalQuestions) * 100,
             levelStars: stars
