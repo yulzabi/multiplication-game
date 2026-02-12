@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⭐ כוכב הכפל - משחק לוח הכפל</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/character.css">
+    <link rel="stylesheet" href="css/effects.css">
+</head>
+<body>
+    <!-- מסך פתיחה -->
+    <div id="screen-home" class="screen active">
+        <div class="home-container">
+            <h1 class="game-title">⭐ כוכב הכפל ⭐</h1>
+            <p class="game-subtitle">בואו ללמוד את לוח הכפל!</p>
+            
+            <div class="character-home">
+                <div id="kafli-home" class="kafli">
+                    <div class="kafli-ear kafli-ear-left"></div>
+                    <div class="kafli-ear kafli-ear-right"></div>
+                    <div class="kafli-head">
+                        <div class="kafli-eye kafli-eye-left"><div class="kafli-pupil"></div></div>
+                        <div class="kafli-eye kafli-eye-right"><div class="kafli-pupil"></div></div>
+                        <div class="kafli-nose"></div>
+                        <div class="kafli-mouth kafli-mouth-happy"></div>
+                        <div class="kafli-cheek kafli-cheek-left"></div>
+                        <div class="kafli-cheek kafli-cheek-right"></div>
+                    </div>
+                    <div class="kafli-body">
+                        <div class="kafli-arm kafli-arm-left"></div>
+                        <div class="kafli-arm kafli-arm-right"></div>
+                        <div class="kafli-belly"></div>
+                    </div>
+                    <div class="kafli-tail"></div>
+                </div>
+                <div class="speech-bubble" id="home-speech">
+                    <p>שלום! אני כפלי! 🦊<br>בואו נלמד כפל ביחד!</p>
+                </div>
+            </div>
+
+            <div class="menu-buttons">
+                <button class="btn btn-practice" onclick="Game.startMode('practice')">
+                    <span class="btn-icon">🎯</span>
+                    <span class="btn-text">תרגול חופשי</span>
+                </button>
+                <button class="btn btn-time" onclick="Game.startMode('timeChallenge')">
+                    <span class="btn-icon">⏱️</span>
+                    <span class="btn-text">אתגר הזמן</span>
+                </button>
+                <button class="btn btn-stars" onclick="Game.startMode('starJourney')">
+                    <span class="btn-icon">🌟</span>
+                    <span class="btn-text">מסע הכוכבים</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- מסך בחירת לוח כפל (לתרגול חופשי) -->
+    <div id="screen-select" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="Game.goHome()">🏠 חזרה</button>
+            <h2>בחרו לוח כפל</h2>
+        </div>
+        <div class="select-grid" id="select-grid">
+            <!-- כפתורים ייווצרו דינמית -->
+        </div>
+        <button class="btn btn-mix" onclick="Practice.startMixed()">
+            <span class="btn-icon">🎲</span>
+            <span class="btn-text">ערבוב הכל!</span>
+        </button>
+    </div>
+
+    <!-- מסך בחירת שלב (למסע הכוכבים) -->
+    <div id="screen-levels" class="screen">
+        <div class="screen-header">
+            <button class="btn-back" onclick="Game.goHome()">🏠 חזרה</button>
+            <h2>🌟 מסע הכוכבים 🌟</h2>
+        </div>
+        <div class="levels-grid" id="levels-grid">
+            <!-- שלבים ייווצרו דינמית -->
+        </div>
+    </div>
+
+    <!-- מסך משחק -->
+    <div id="screen-game" class="screen">
+        <div class="game-header">
+            <button class="btn-back" onclick="Game.exitGame()">🏠</button>
+            <div class="game-info">
+                <div class="score-display" id="score-display">⭐ 0</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="timer-display" id="timer-display" style="display:none;">⏱️ <span id="timer-value">60</span></div>
+            </div>
+            <div class="streak-display" id="streak-display"></div>
+        </div>
+
+        <div class="game-content">
+            <div class="character-game">
+                <div id="kafli-game" class="kafli kafli-small">
+                    <div class="kafli-ear kafli-ear-left"></div>
+                    <div class="kafli-ear kafli-ear-right"></div>
+                    <div class="kafli-head">
+                        <div class="kafli-eye kafli-eye-left"><div class="kafli-pupil"></div></div>
+                        <div class="kafli-eye kafli-eye-right"><div class="kafli-pupil"></div></div>
+                        <div class="kafli-nose"></div>
+                        <div class="kafli-mouth kafli-mouth-happy"></div>
+                        <div class="kafli-cheek kafli-cheek-left"></div>
+                        <div class="kafli-cheek kafli-cheek-right"></div>
+                    </div>
+                    <div class="kafli-body">
+                        <div class="kafli-arm kafli-arm-left"></div>
+                        <div class="kafli-arm kafli-arm-right"></div>
+                        <div class="kafli-belly"></div>
+                    </div>
+                    <div class="kafli-tail"></div>
+                </div>
+                <div class="speech-bubble speech-bubble-small" id="game-speech">
+                    <p id="game-speech-text">בהצלחה!</p>
+                </div>
+            </div>
+
+            <div class="question-area">
+                <div class="question-text" id="question-text">
+                    <span id="num1" class="num">3</span>
+                    <span class="operator">×</span>
+                    <span id="num2" class="num">4</span>
+                    <span class="equals">=</span>
+                    <span class="answer-mark">?</span>
+                </div>
+            </div>
+
+            <div class="answers-grid" id="answers-grid">
+                <!-- כפתורי תשובות ייווצרו דינמית -->
+            </div>
+        </div>
+    </div>
+
+    <!-- מסך סיכום -->
+    <div id="screen-summary" class="screen">
+        <div class="summary-container">
+            <div class="character-summary">
+                <div id="kafli-summary" class="kafli">
+                    <div class="kafli-ear kafli-ear-left"></div>
+                    <div class="kafli-ear kafli-ear-right"></div>
+                    <div class="kafli-head">
+                        <div class="kafli-eye kafli-eye-left"><div class="kafli-pupil"></div></div>
+                        <div class="kafli-eye kafli-eye-right"><div class="kafli-pupil"></div></div>
+                        <div class="kafli-nose"></div>
+                        <div class="kafli-mouth kafli-mouth-happy"></div>
+                        <div class="kafli-cheek kafli-cheek-left"></div>
+                        <div class="kafli-cheek kafli-cheek-right"></div>
+                    </div>
+                    <div class="kafli-body">
+                        <div class="kafli-arm kafli-arm-left"></div>
+                        <div class="kafli-arm kafli-arm-right"></div>
+                        <div class="kafli-belly"></div>
+                    </div>
+                    <div class="kafli-tail"></div>
+                </div>
+                <div class="speech-bubble" id="summary-speech">
+                    <p id="summary-speech-text">עבודה מצוינת!</p>
+                </div>
+            </div>
+
+            <h2 id="summary-title">סיכום</h2>
+            <div class="summary-stats">
+                <div class="stat-item">
+                    <span class="stat-icon">✅</span>
+                    <span class="stat-label">תשובות נכונות</span>
+                    <span class="stat-value" id="stat-correct">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">❌</span>
+                    <span class="stat-label">תשובות שגויות</span>
+                    <span class="stat-value" id="stat-wrong">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">⭐</span>
+                    <span class="stat-label">כוכבים</span>
+                    <span class="stat-value" id="stat-stars">0</span>
+                </div>
+                <div class="stat-item" id="stat-record-container" style="display:none;">
+                    <span class="stat-icon">🏆</span>
+                    <span class="stat-label">שיא חדש!</span>
+                    <span class="stat-value" id="stat-record">0</span>
+                </div>
+            </div>
+            <div class="summary-buttons">
+                <button class="btn btn-retry" onclick="Game.retry()">
+                    <span class="btn-icon">🔄</span>
+                    <span class="btn-text">שחק שוב</span>
+                </button>
+                <button class="btn btn-home" onclick="Game.goHome()">
+                    <span class="btn-icon">🏠</span>
+                    <span class="btn-text">תפריט ראשי</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- אפקטים -->
+    <div id="confetti-container"></div>
+    <div id="stars-container"></div>
+
+    <!-- טעינת JavaScript -->
+    <script src="js/storage.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/character.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/modes/practice.js"></script>
+    <script src="js/modes/timeChallenge.js"></script>
+    <script src="js/modes/starJourney.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+/* ========================================
+   כפלי השועל - עיצוב הדמות
+   ======================================== */
+
+.kafli {
+    position: relative;
+    width: 120px;
+    height: 150px;
+    display: inline-block;
+    animation: kafliIdle 3s ease-in-out infinite;
+}
+
+.kafli-small {
+    transform: scale(0.65);
+    transform-origin: center center;
+}
+
+/* ========================================
+   ראש
+   ======================================== */
+.kafli-head {
+    position: absolute;
+    width: 90px;
+    height: 80px;
+    background: #FF8C00;
+    border-radius: 45px 45px 40px 40px;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: inset -5px -5px 15px rgba(0,0,0,0.1);
+}
+
+/* פרווה לבנה בפנים */
+.kafli-head::before {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 45px;
+    background: #FFF8DC;
+    border-radius: 30px 30px 25px 25px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ========================================
+   אוזניים
+   ======================================== */
+.kafli-ear {
+    position: absolute;
+    width: 30px;
+    height: 40px;
+    background: #FF8C00;
+    z-index: 1;
+    top: 0;
+    border-radius: 50% 50% 0 0;
+}
+
+.kafli-ear::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 25px;
+    background: #FFB366;
+    border-radius: 50% 50% 0 0;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.kafli-ear-left {
+    left: 18px;
+    transform: rotate(-15deg);
+}
+
+.kafli-ear-right {
+    right: 18px;
+    transform: rotate(15deg);
+}
+
+/* ========================================
+   עיניים
+   ======================================== */
+.kafli-eye {
+    position: absolute;
+    width: 22px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    top: 22px;
+    z-index: 3;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.05);
+}
+
+.kafli-eye-left {
+    left: 18px;
+}
+
+.kafli-eye-right {
+    right: 18px;
+}
+
+.kafli-pupil {
+    position: absolute;
+    width: 12px;
+    height: 13px;
+    background: #2c1810;
+    border-radius: 50%;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: blink 4s ease-in-out infinite;
+}
+
+.kafli-pupil::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    top: 1px;
+    right: 1px;
+}
+
+@keyframes blink {
+    0%, 96%, 100% { transform: translateX(-50%) scaleY(1); }
+    98% { transform: translateX(-50%) scaleY(0.1); }
+}
+
+/* ========================================
+   אף
+   ======================================== */
+.kafli-nose {
+    position: absolute;
+    width: 14px;
+    height: 10px;
+    background: #2c1810;
+    border-radius: 50%;
+    bottom: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.kafli-nose::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 8px;
+    background: #2c1810;
+    bottom: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0 0 2px 2px;
+}
+
+/* ========================================
+   פה
+   ======================================== */
+.kafli-mouth {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;
+}
+
+.kafli-mouth-happy {
+    width: 25px;
+    height: 10px;
+    border: none;
+    border-bottom: 3px solid #2c1810;
+    border-radius: 0 0 50% 50%;
+}
+
+.kafli-mouth-wow {
+    width: 16px;
+    height: 16px;
+    background: #2c1810;
+    border-radius: 50%;
+}
+
+.kafli-mouth-sad {
+    width: 20px;
+    height: 8px;
+    border: none;
+    border-top: 3px solid #2c1810;
+    border-radius: 50% 50% 0 0;
+    bottom: 10px;
+}
+
+/* ========================================
+   לחיים
+   ======================================== */
+.kafli-cheek {
+    position: absolute;
+    width: 16px;
+    height: 10px;
+    background: rgba(255, 130, 130, 0.4);
+    border-radius: 50%;
+    bottom: 18px;
+    z-index: 3;
+}
+
+.kafli-cheek-left {
+    left: 8px;
+}
+
+.kafli-cheek-right {
+    right: 8px;
+}
+
+/* ========================================
+   גוף
+   ======================================== */
+.kafli-body {
+    position: absolute;
+    width: 70px;
+    height: 55px;
+    background: #FF8C00;
+    border-radius: 35px 35px 25px 25px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.kafli-belly {
+    position: absolute;
+    width: 45px;
+    height: 40px;
+    background: #FFF8DC;
+    border-radius: 50%;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ========================================
+   ידיים
+   ======================================== */
+.kafli-arm {
+    position: absolute;
+    width: 18px;
+    height: 35px;
+    background: #FF8C00;
+    border-radius: 10px;
+    top: 5px;
+    z-index: 0;
+}
+
+.kafli-arm::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #FFF8DC;
+    border-radius: 50%;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.kafli-arm-left {
+    left: -8px;
+    transform: rotate(10deg);
+}
+
+.kafli-arm-right {
+    right: -8px;
+    transform: rotate(-10deg);
+}
+
+/* ========================================
+   זנב
+   ======================================== */
+.kafli-tail {
+    position: absolute;
+    width: 35px;
+    height: 25px;
+    background: #FF8C00;
+    border-radius: 50% 0 50% 50%;
+    bottom: 10px;
+    left: -15px;
+    z-index: 0;
+    transform: rotate(-20deg);
+    animation: tailWag 2s ease-in-out infinite;
+}
+
+.kafli-tail::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #FFF8DC;
+    border-radius: 50%;
+    bottom: 0;
+    left: 0;
+}
+
+@keyframes tailWag {
+    0%, 100% { transform: rotate(-20deg); }
+    50% { transform: rotate(-35deg); }
+}
+
+/* ========================================
+   אנימציות הדמות
+   ======================================== */
+@keyframes kafliIdle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes kafliJump {
+    0% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(0) scale(0.95, 1.05); }
+    40% { transform: translateY(-30px) scale(1.05, 0.95); }
+    60% { transform: translateY(-30px) scale(1.05, 0.95); }
+    80% { transform: translateY(0) scale(0.95, 1.05); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+@keyframes kafliSad {
+    0%, 100% { transform: translateY(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
+}
+
+@keyframes kafliCheer {
+    0% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(-5deg); }
+    50% { transform: translateY(0) rotate(0deg); }
+    75% { transform: translateY(-15px) rotate(5deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* מצבי אנימציה */
+.kafli.kafli-jumping {
+    animation: kafliJump 0.6s ease !important;
+}
+
+.kafli.kafli-jumping .kafli-arm-left {
+    animation: armWaveLeft 0.6s ease;
+}
+
+.kafli.kafli-jumping .kafli-arm-right {
+    animation: armWaveRight 0.6s ease;
+}
+
+@keyframes armWaveLeft {
+    0%, 100% { transform: rotate(10deg); }
+    50% { transform: rotate(-40deg) translateY(-10px); }
+}
+
+@keyframes armWaveRight {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(40deg) translateY(-10px); }
+}
+
+.kafli.kafli-sad {
+    animation: kafliSad 0.5s ease !important;
+}
+
+.kafli.kafli-cheering {
+    animation: kafliCheer 0.8s ease !important;
+}
+
+/* עיניים שמחות (כשמקפץ) */
+.kafli.kafli-jumping .kafli-eye,
+.kafli.kafli-cheering .kafli-eye {
+    height: 8px;
+    top: 30px;
+    border-radius: 0 0 50% 50%;
+    background: transparent;
+    border-bottom: 4px solid #2c1810;
+}
+
+.kafli.kafli-jumping .kafli-pupil,
+.kafli.kafli-cheering .kafli-pupil {
+    display: none;
+}
+
+/* כפלי קטן - התאמות */
+.kafli-small {
+    animation: none;
+}
+
+.kafli-small.kafli-jumping {
+    animation: kafliJump 0.6s ease !important;
+    transform-origin: center center;
+}
