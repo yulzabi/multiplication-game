@@ -88,7 +88,7 @@ const StarJourney = {
         document.getElementById('timer-display').style.display = 'none';
 
         // אתחול
-        document.getElementById('score-display').textContent = '⭐ 0';
+        document.getElementById('score-display').textContent = '✅ 0';
         document.getElementById('progress-fill').style.width = '0%';
         Effects.updateStreak(0);
 
@@ -148,7 +148,7 @@ const StarJourney = {
             Effects.updateStreak(this.streak);
             Character.reactCorrect('kafli-game', 'game-speech-text', this.streak);
 
-            document.getElementById('score-display').textContent = `⭐ ${this.correct}`;
+            document.getElementById('score-display').textContent = `✅ ${this.correct}`;
         } else {
             this.wrong++;
             this.streak = 0;
